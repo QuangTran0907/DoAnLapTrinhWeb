@@ -1,0 +1,106 @@
+﻿@model ShopAcc.Models.Account
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.idGame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idGame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.taikhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.taikhoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.matkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matkhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangthai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangthai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaycapnhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaycapnhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.giaban)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giaban)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangphuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangphuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
