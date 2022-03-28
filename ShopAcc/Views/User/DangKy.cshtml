@@ -1,0 +1,103 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="~/Content/Usersignup/https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Content/Usersignup/https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/Content/Usersignup/css/style.css">
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <section class="ftco-section">
+            <div class="container">
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                        <h2 class="heading-section">Đăng ký</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-7 col-lg-5">
+                        <div class="login-wrap p-4 p-md-5">
+                            <h3 class="mb-4">Sign Up</h3>
+
+                            <h4 class="text-center" style="font-weight:600;margin-bottom:30px; color:orange;">@ViewBag.ThongBao</h4>
+
+                            <div class="form-group">
+                                <label class="label" for="tendn">Tên đăng nhập</label>
+                                <input type="text" name="tendn" class="form-control" placeholder="">
+                                @ViewData["Loi1"]
+                            </div>
+                            <div class="form-group">
+                                <label class="label" for="matkhau">Mật khẩu</label>
+                                <input type="text" name="matkhau" class="form-control" placeholder="">
+                                @ViewData["Loi2"]
+                            </div>
+                            <div class="form-group">
+                                <label class="label" for="MatKhauXacNhan">Mật khẩu xác nhận</label>
+                                <input class="form-control text-box single-line input-validation-error"
+                                       data-val="true" data-val-required="Phải nhập mật khẩu xác nhận!"
+                                       id="MatKhauXacNhan" name="MatKhauXacNhan" type="password" value="" aria-
+                                       describedby="MatKhauXacNhan-error" aria-invalid="true">
+
+                                @ViewData["NhapMKXN"]
+                                @ViewData["MatKhauGiongNhau"]
+                            </div>
+                            <div class="form-group">
+                                <label class="label" for="email">Email</label>
+                                <input type="text" name="email" class="form-control" placeholder="">
+                                @ViewData["Loi3"]
+                            </div>
+                            <div class="form-group">
+                                <label class="label" for="sdt">Số điện thoại</label>
+                                <input type="text" name="sdt" class="form-control" placeholder="">
+                                @ViewData["Loi4"]
+                            </div>
+                            <div class="form-group">
+                                <label class="label" for="tenhienthi">Tên hiển thị</label>
+                                <input type="text" name="tenhienthi" class="form-control" placeholder="">
+                                @ViewData["Loi5"]
+                            </div>
+                            <div class="form-group">
+                                <label class="label" for="anhdaidien">Ảnh đại diện</label>
+                                <input type="text" name="anhdaidien" class="form-control" placeholder="">
+                                @ViewData["Loi6"]
+                            </div>
+
+                            <div class="form-group d-flex justify-content-end mt-5">
+                                <button type="submit" class="btn btn-primary submit"><span class="fa fa-paper-plane"></span></button>
+                            </div>
+
+
+
+
+                            <p class="text-center">Already have an account? <a href="@Url.Action("DangNhap")">Sign In</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <script src="~/Content/Usersignup/js/jquery.min.js"></script>
+        <script src="~/Content/Usersignup/js/popper.js"></script>
+        <script src="~/Content/Usersignup/js/bootstrap.min.js"></script>
+        <script src="~/Content/Usersignup/js/main.js"></script>
+    }
+</body>
+</html>
+
+

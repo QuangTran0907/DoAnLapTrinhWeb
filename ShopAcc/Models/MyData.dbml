@@ -30,7 +30,7 @@
   </Table>
   <Table Name="dbo.chitietHD" Member="chitietHDs">
     <Type Name="chitietHD">
-      <Column Name="iduser" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="maHD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ngaylap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -80,7 +80,7 @@
   </Table>
   <Table Name="dbo.TruyCap" Member="TruyCaps">
     <Type Name="TruyCap">
-      <Column Name="iduser" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="iduser" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="trangthai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="TruyCap_chitietHD" Member="chitietHDs" ThisKey="iduser,id" OtherKey="iduser,id" Type="chitietHD" />

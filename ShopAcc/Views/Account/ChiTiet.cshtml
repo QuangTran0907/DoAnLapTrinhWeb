@@ -1,0 +1,72 @@
+﻿@model ShopAcc.Models.Account
+
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ChiTiet</h2>
+<head>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <a href="@Url.Action("Index")">
+        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+            <i class="bi bi-arrow-left" style="font-size: 15px"></i>
+            <strong style="font-size:14px">Quay lại</strong>
+        </button>
+        </a>
+
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6">
+                        <img class="card-img-top mb-5 mb-md-0" src="@Model.hinh" alt="..." />
+                    </div>
+                    <div class="col-md-6">
+                        @*<div class="small mb-1">SKU: BST-498</div>*@
+                        <h1 class="display-5 fw-bolder">Shop item template</h1>
+                        <div class="fs-5 mb-5">
+                            @*<span class="text-decoration-line-through">$45.00</span>*@
+                            <trong style="font-size:20px; color:dimgray">Giá: <span>@Model.giaban</span> VNĐ</trong>
+                            <hr class="nav-divider" />
+                            <ul>
+                                <li class="bi bi-caret-right-fill" style="list-style:none ;left:0; font-size:larger;">
+                                    <strong>Rank:   </strong> @Model.rank
+                                    <p> </p>
+                                </li>
+                                <li class="bi bi-caret-right-fill" style="list-style: none;left:0; font-size:larger">
+                                    <strong>Tướng:  </strong> @Model.tuong
+                                    <p> </p>
+                                </li>
+                                <li class="bi bi-caret-right-fill" style="list-style: none;left:0; font-size:larger">
+                                    <strong>Skin:   </strong> @Model.trangphuc
+                                </li>
+                            </ul>
+                        </div>
+                        @*<p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>*@
+                        <div class="d-flex">
+                            @*<input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />*@
+                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                <i class="bi bi-cart-plus-fill" style="font-size: 15px"></i>
+                                <strong style="font-size:14px"> Thêm vào giỏ hàng</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button class="btn btn-primary flex-shrink-0" type="button">
+            @*<div style="color: white; text-decoration: none"><i class="bi bi-file-earmark-richtext"></i> @Html.ActionLink(" Chỉnh sửa", "Edit", new { id = Model.id })</div>*@
+            <i class="bi bi-file-earmark-richtext" style="color: white"></i>
+            <a href='@Url.Action( "Edit", "Account", new { id = Model.id })' style="color: white; text-decoration: none"> Chỉnh sửa</a>
+        </button>
+        </div>
+</body>
+

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace ShopAcc.Controllers
 {
@@ -105,5 +106,28 @@ namespace ShopAcc.Controllers
             }
             return this.Edit(id);
         }
+        public ActionResult HomePage(int? page)
+        {
+            if(Session["TaiKhoan"]==null)
+            {
+                return View("HomePage");
+            }    
+            ViewBag.id = "Trần Hữu Quang";
+            int pageSize = 8;
+            int pageNum = (page ?? 1);
+
+            var all_account = from tt in data.Accounts select tt;
+            return View(all_account.ToPagedList(pageNum,pageSize));
+        }
+        public ActionResult ChiTiet()
+        {
+
+            var all_account = data.Accounts.Where(m => m.id == 1).First();
+            return View(all_account);
+
+        }
+
+
+
     }
 }

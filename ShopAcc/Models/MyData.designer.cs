@@ -814,7 +814,7 @@ namespace ShopAcc.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iduser", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iduser", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int iduser
 		{
 			get
@@ -1747,7 +1747,7 @@ namespace ShopAcc.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iduser", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iduser", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int iduser
 		{
 			get
