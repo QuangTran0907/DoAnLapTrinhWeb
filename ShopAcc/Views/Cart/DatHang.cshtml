@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<ShopAcc.Models.GioHang>
 
 @{
-    Layout = null;
-}
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }
 
 <!DOCTYPE html>
 <html>
@@ -12,55 +12,13 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Cart</title>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">ShopACC.vlxx</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-                <ul class="navbar-nav m-auto">
-                    <li class="nav-item m-auto">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category.html">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="product.html">Product</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="contact.html">Cart <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-
-                <form class="form-inline my-2 my-lg-0">
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-secondary btn-number">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <a class="btn btn-success btn-sm ml-3" href="cart.html">
-                        <i class="fa fa-shopping-cart"></i> Cart
-                        <span class="badge badge-light">@ViewBag.Tongsoluong</span>
-                    </a>
-                </form>
-            </div>
-        </div>
-    </nav>
+   
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">GIỎ HÀNG CỦA BẠN</h1>
@@ -75,10 +33,10 @@
                         <thead>
                             <tr>
                                 <th scope="col"> </th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Available</th>
-                                <th scope="col">Available</th>
-                                <th scope="col" class="text-right">Price</th>
+                                <th scope="col">Loại game</th>
+                                <th scope="col">Tình trạng</th>
+                                <th scope="col" style="text-align:right">Loại Acc</th>
+                                <th scope="col" class="text-right">Giá</th>
                                 <th> </th>
                             </tr>
                         </thead>
@@ -117,6 +75,14 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td>Số lượng</td>
+                                <td class="text-right">@ViewBag.Tongsoluong</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>Giảm giá</td>
                                 <td class="text-right">0 VND</td>
                             </tr>
@@ -126,22 +92,29 @@
                                 <td></td>
                                 <td></td>
                                 <td><strong>Thành tiền</strong></td>
-                                <td class="text-right"><strong>@ViewBag.Tongtien VND</strong></td>
+                                <td class="text-right"><strong>@ViewBag.Tongtien</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             @using ShopAcc.Models
-            <h2 style="text-align:center">Thông tin đặt hàng</h2>
+
             @{
                 User kh = (User)Session["TaiKhoan"];
             }
             <table align="center">
                 @using (Html.BeginForm())
                 {
+
                     @Html.ValidationSummary(true)
                     <tr style="height:40px">
+                        <td>
+                            <h2 style="text-align:right"> Thông tin đặt hàng</h2> <br />
+                        </td>
+                    </tr>
+                    <tr style="height:40px">
+
                         <td>Họ tên khách hàng: </td>
                         <td style="font-weight:bold">@kh.tenhienthi</td>
                     </tr>
@@ -154,19 +127,28 @@
                         <td style="font-weight:bold">@kh.sdt</td>
                     </tr>
                     <tr style="height:40px">
-                        <td>Điện thoại: </td>
-                        <td style="font-weight:bold">@kh.sdt</td>
-                    </tr>
-                    <tr style="height:40px">
                         <td>Ngày mua: </td>
                         <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
                     </tr>
                     <tr style="height:40px">
                         <td></td>
+
                         <td style="font-weight:bold">
-                            <input type="submit" value="Xác nhận" class="btn btn-success" />
+                            @*@Html.ActionLink("Thanh Toán", "Payment")*@
+
+                            <a href="@Url.Action("PaymentMoMo")">
+                                <button class="btn btn-danger flex-shrink-0" type="button" style="width: 300px">
+                                    <i class="bi bi-check-circle" style="font-size: 15px"></i>
+                                    <strong style="font-size:14px">Xác nhận thanh toán</strong>
+                                </button>
+                            </a>
+
                         </td>
+
                     </tr>
+
+
+
                 }
             </table>
 

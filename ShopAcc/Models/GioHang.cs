@@ -9,7 +9,7 @@ namespace ShopAcc.Models
     {
         MyDataDataContext data = new MyDataDataContext();
         public int idacc { get; set; }
-        public int idGame { get; set; }
+        public string idGame { get; set; }
         public string taikhoan   { get; set; }
         public string matkhau { get; set; }
         public Boolean? trangthai { get; set; }
@@ -19,7 +19,7 @@ namespace ShopAcc.Models
         public int? tuong { get; set; }
         public int? trangphuc { get; set; }
         public string hinh { get; set; }
-        public int idLoai { get; set; }
+        public string idLoai { get; set; }
 
 
 
@@ -28,7 +28,7 @@ namespace ShopAcc.Models
         {
             idacc = id;
             Account acc = data.Accounts.Single(n => n.id == id);
-            idGame = acc.idGame;
+            idGame = acc.LoaiGame.tengame;
             taikhoan = acc.taikhoan;
             matkhau = acc.matkhau;
             trangthai =  acc.trangthai;
@@ -38,7 +38,7 @@ namespace ShopAcc.Models
             tuong = acc.tuong;
             trangphuc = acc.trangphuc;
             hinh = acc.hinh;
-            idLoai = acc.idLoai;
+            idLoai = acc.LoaiAcc.tenloai;
         }
 
 

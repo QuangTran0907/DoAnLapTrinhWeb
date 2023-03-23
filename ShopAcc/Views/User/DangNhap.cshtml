@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -39,9 +38,7 @@
                     @Html.ValidationSummary(true)
 
                     <div class="login100-form validate-form">
-                        <span class="login100-form-title">
-                            Login
-                        </span>
+                        <h2 class="text-center"style="font-weight:600;margin-bottom:30px; color:black;">Đăng nhập</h2>
                         <h4 class="text-center" style="font-weight:600;margin-bottom:30px; color:orange;">@ViewBag.ThongBao</h4>
                         <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                             <input class="input100" type="text" name="tendn" placeholder="Tên đăng nhập">
@@ -67,18 +64,11 @@
                             </button>
                         </div>
 
-                        <div class="text-center p-t-12">
-                            <span class="txt1">
-                                Forgot
-                            </span>
-                            <a class="txt2" href="#">
-                                Username / Password?
-                            </a>
-                        </div>
+                       
 
                         <div class="text-center p-t-136">
-                            <a class="txt2" href="#">
-                                <i>@Html.ActionLink("Create your Account", "DangKy", "User")</i>
+                            <a class="txt2">
+                                <i>@Html.ActionLink("Tạo tài khoản", "DangKy", "User")</i>
                             </a>
                         </div>
                     </div>
@@ -101,12 +91,14 @@
     <!--===============================================================================================-->
     <script src="~/Content/Userlogin/vendor/tilt/tilt.jquery.min.js"></script>
     <script>
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
     </script>
     <!--===============================================================================================-->
     <script src="~/Content/Userlogin/js/main.js"></script>
 
 </body>
 </html>
+
+

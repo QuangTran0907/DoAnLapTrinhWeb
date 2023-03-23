@@ -36,9 +36,9 @@ namespace ShopAcc.Models
     partial void InsertAdmin(Admin instance);
     partial void UpdateAdmin(Admin instance);
     partial void DeleteAdmin(Admin instance);
-    partial void InsertchitietHD(chitietHD instance);
-    partial void UpdatechitietHD(chitietHD instance);
-    partial void DeletechitietHD(chitietHD instance);
+    partial void InsertChiTietHD(ChiTietHD instance);
+    partial void UpdateChiTietHD(ChiTietHD instance);
+    partial void DeleteChiTietHD(ChiTietHD instance);
     partial void InsertHoaDon(HoaDon instance);
     partial void UpdateHoaDon(HoaDon instance);
     partial void DeleteHoaDon(HoaDon instance);
@@ -51,9 +51,6 @@ namespace ShopAcc.Models
     partial void InsertMedia(Media instance);
     partial void UpdateMedia(Media instance);
     partial void DeleteMedia(Media instance);
-    partial void InsertPhanHoi(PhanHoi instance);
-    partial void UpdatePhanHoi(PhanHoi instance);
-    partial void DeletePhanHoi(PhanHoi instance);
     partial void InsertTruyCap(TruyCap instance);
     partial void UpdateTruyCap(TruyCap instance);
     partial void DeleteTruyCap(TruyCap instance);
@@ -63,7 +60,7 @@ namespace ShopAcc.Models
     #endregion
 		
 		public MyDataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopAccConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ShopAccConnectionString2"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -108,11 +105,11 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<chitietHD> chitietHDs
+		public System.Data.Linq.Table<ChiTietHD> ChiTietHDs
 		{
 			get
 			{
-				return this.GetTable<chitietHD>();
+				return this.GetTable<ChiTietHD>();
 			}
 		}
 		
@@ -145,14 +142,6 @@ namespace ShopAcc.Models
 			get
 			{
 				return this.GetTable<Media>();
-			}
-		}
-		
-		public System.Data.Linq.Table<PhanHoi> PhanHois
-		{
-			get
-			{
-				return this.GetTable<PhanHoi>();
 			}
 		}
 		
@@ -454,7 +443,7 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hinh", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hinh", DbType="VarChar(250)")]
 		public string hinh
 		{
 			get
@@ -649,8 +638,6 @@ namespace ShopAcc.Models
 		
 		private string _matkhau;
 		
-		private System.Nullable<byte> _quyen;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -661,8 +648,6 @@ namespace ShopAcc.Models
     partial void OntenDangNhapChanged();
     partial void OnmatkhauChanging(string value);
     partial void OnmatkhauChanged();
-    partial void OnquyenChanging(System.Nullable<byte> value);
-    partial void OnquyenChanged();
     #endregion
 		
 		public Admin()
@@ -730,26 +715,6 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quyen", DbType="TinyInt")]
-		public System.Nullable<byte> quyen
-		{
-			get
-			{
-				return this._quyen;
-			}
-			set
-			{
-				if ((this._quyen != value))
-				{
-					this.OnquyenChanging(value);
-					this.SendPropertyChanging();
-					this._quyen = value;
-					this.SendPropertyChanged("quyen");
-					this.OnquyenChanged();
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -771,8 +736,8 @@ namespace ShopAcc.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.chitietHD")]
-	public partial class chitietHD : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ChiTietHD")]
+	public partial class ChiTietHD : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -783,9 +748,7 @@ namespace ShopAcc.Models
 		
 		private int _maHD;
 		
-		private System.Nullable<System.DateTime> _ngaylap;
-		
-		private System.Nullable<decimal> _tongtien;
+		private System.Nullable<decimal> _gia;
 		
 		private EntityRef<HoaDon> _HoaDon;
 		
@@ -801,13 +764,11 @@ namespace ShopAcc.Models
     partial void OnidChanged();
     partial void OnmaHDChanging(int value);
     partial void OnmaHDChanged();
-    partial void OnngaylapChanging(System.Nullable<System.DateTime> value);
-    partial void OnngaylapChanged();
-    partial void OntongtienChanging(System.Nullable<decimal> value);
-    partial void OntongtienChanged();
+    partial void OngiaChanging(System.Nullable<decimal> value);
+    partial void OngiaChanged();
     #endregion
 		
-		public chitietHD()
+		public ChiTietHD()
 		{
 			this._HoaDon = default(EntityRef<HoaDon>);
 			this._TruyCap = default(EntityRef<TruyCap>);
@@ -886,47 +847,27 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngaylap", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ngaylap
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gia", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> gia
 		{
 			get
 			{
-				return this._ngaylap;
+				return this._gia;
 			}
 			set
 			{
-				if ((this._ngaylap != value))
+				if ((this._gia != value))
 				{
-					this.OnngaylapChanging(value);
+					this.OngiaChanging(value);
 					this.SendPropertyChanging();
-					this._ngaylap = value;
-					this.SendPropertyChanged("ngaylap");
-					this.OnngaylapChanged();
+					this._gia = value;
+					this.SendPropertyChanged("gia");
+					this.OngiaChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tongtien", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> tongtien
-		{
-			get
-			{
-				return this._tongtien;
-			}
-			set
-			{
-				if ((this._tongtien != value))
-				{
-					this.OntongtienChanging(value);
-					this.SendPropertyChanging();
-					this._tongtien = value;
-					this.SendPropertyChanged("tongtien");
-					this.OntongtienChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HoaDon_chitietHD", Storage="_HoaDon", ThisKey="maHD", OtherKey="maHD", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HoaDon_ChiTietHD", Storage="_HoaDon", ThisKey="maHD", OtherKey="maHD", IsForeignKey=true)]
 		public HoaDon HoaDon
 		{
 			get
@@ -943,12 +884,12 @@ namespace ShopAcc.Models
 					if ((previousValue != null))
 					{
 						this._HoaDon.Entity = null;
-						previousValue.chitietHDs.Remove(this);
+						previousValue.ChiTietHDs.Remove(this);
 					}
 					this._HoaDon.Entity = value;
 					if ((value != null))
 					{
-						value.chitietHDs.Add(this);
+						value.ChiTietHDs.Add(this);
 						this._maHD = value.maHD;
 					}
 					else
@@ -960,7 +901,7 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyCap_chitietHD", Storage="_TruyCap", ThisKey="iduser,id", OtherKey="iduser,id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyCap_ChiTietHD", Storage="_TruyCap", ThisKey="iduser,id", OtherKey="iduser,id", IsForeignKey=true)]
 		public TruyCap TruyCap
 		{
 			get
@@ -977,12 +918,12 @@ namespace ShopAcc.Models
 					if ((previousValue != null))
 					{
 						this._TruyCap.Entity = null;
-						previousValue.chitietHDs.Remove(this);
+						previousValue.ChiTietHDs.Remove(this);
 					}
 					this._TruyCap.Entity = value;
 					if ((value != null))
 					{
-						value.chitietHDs.Add(this);
+						value.ChiTietHDs.Add(this);
 						this._iduser = value.iduser;
 						this._id = value.id;
 					}
@@ -1025,9 +966,13 @@ namespace ShopAcc.Models
 		
 		private int _maHD;
 		
-		private string _hinhthucthanhtoan;
+		private System.Nullable<bool> _thanhtoan;
 		
-		private EntitySet<chitietHD> _chitietHDs;
+		private System.Nullable<System.DateTime> _ngaythanhtoan;
+		
+		private System.Nullable<decimal> _tongtien;
+		
+		private EntitySet<ChiTietHD> _ChiTietHDs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1035,13 +980,17 @@ namespace ShopAcc.Models
     partial void OnCreated();
     partial void OnmaHDChanging(int value);
     partial void OnmaHDChanged();
-    partial void OnhinhthucthanhtoanChanging(string value);
-    partial void OnhinhthucthanhtoanChanged();
+    partial void OnthanhtoanChanging(System.Nullable<bool> value);
+    partial void OnthanhtoanChanged();
+    partial void OnngaythanhtoanChanging(System.Nullable<System.DateTime> value);
+    partial void OnngaythanhtoanChanged();
+    partial void OntongtienChanging(System.Nullable<decimal> value);
+    partial void OntongtienChanged();
     #endregion
 		
 		public HoaDon()
 		{
-			this._chitietHDs = new EntitySet<chitietHD>(new Action<chitietHD>(this.attach_chitietHDs), new Action<chitietHD>(this.detach_chitietHDs));
+			this._ChiTietHDs = new EntitySet<ChiTietHD>(new Action<ChiTietHD>(this.attach_ChiTietHDs), new Action<ChiTietHD>(this.detach_ChiTietHDs));
 			OnCreated();
 		}
 		
@@ -1065,36 +1014,76 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hinhthucthanhtoan", DbType="NVarChar(30)")]
-		public string hinhthucthanhtoan
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thanhtoan", DbType="Bit")]
+		public System.Nullable<bool> thanhtoan
 		{
 			get
 			{
-				return this._hinhthucthanhtoan;
+				return this._thanhtoan;
 			}
 			set
 			{
-				if ((this._hinhthucthanhtoan != value))
+				if ((this._thanhtoan != value))
 				{
-					this.OnhinhthucthanhtoanChanging(value);
+					this.OnthanhtoanChanging(value);
 					this.SendPropertyChanging();
-					this._hinhthucthanhtoan = value;
-					this.SendPropertyChanged("hinhthucthanhtoan");
-					this.OnhinhthucthanhtoanChanged();
+					this._thanhtoan = value;
+					this.SendPropertyChanged("thanhtoan");
+					this.OnthanhtoanChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HoaDon_chitietHD", Storage="_chitietHDs", ThisKey="maHD", OtherKey="maHD")]
-		public EntitySet<chitietHD> chitietHDs
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ngaythanhtoan", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ngaythanhtoan
 		{
 			get
 			{
-				return this._chitietHDs;
+				return this._ngaythanhtoan;
 			}
 			set
 			{
-				this._chitietHDs.Assign(value);
+				if ((this._ngaythanhtoan != value))
+				{
+					this.OnngaythanhtoanChanging(value);
+					this.SendPropertyChanging();
+					this._ngaythanhtoan = value;
+					this.SendPropertyChanged("ngaythanhtoan");
+					this.OnngaythanhtoanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tongtien", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> tongtien
+		{
+			get
+			{
+				return this._tongtien;
+			}
+			set
+			{
+				if ((this._tongtien != value))
+				{
+					this.OntongtienChanging(value);
+					this.SendPropertyChanging();
+					this._tongtien = value;
+					this.SendPropertyChanged("tongtien");
+					this.OntongtienChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HoaDon_ChiTietHD", Storage="_ChiTietHDs", ThisKey="maHD", OtherKey="maHD")]
+		public EntitySet<ChiTietHD> ChiTietHDs
+		{
+			get
+			{
+				return this._ChiTietHDs;
+			}
+			set
+			{
+				this._ChiTietHDs.Assign(value);
 			}
 		}
 		
@@ -1118,13 +1107,13 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		private void attach_chitietHDs(chitietHD entity)
+		private void attach_ChiTietHDs(ChiTietHD entity)
 		{
 			this.SendPropertyChanging();
 			entity.HoaDon = this;
 		}
 		
-		private void detach_chitietHDs(chitietHD entity)
+		private void detach_ChiTietHDs(ChiTietHD entity)
 		{
 			this.SendPropertyChanging();
 			entity.HoaDon = null;
@@ -1179,7 +1168,7 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenloai", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenloai", DbType="NVarChar(20)")]
 		public string tenloai
 		{
 			get
@@ -1411,7 +1400,7 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_link_Media", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_link_Media", DbType="VarChar(250)")]
 		public string link_Media
 		{
 			get
@@ -1510,205 +1499,6 @@ namespace ShopAcc.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PhanHoi")]
-	public partial class PhanHoi : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idPhanHoi;
-		
-		private string _noidung;
-		
-		private string _hinhanh;
-		
-		private System.Nullable<int> _vote;
-		
-		private int _iduser;
-		
-		private EntityRef<User> _User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidPhanHoiChanging(int value);
-    partial void OnidPhanHoiChanged();
-    partial void OnnoidungChanging(string value);
-    partial void OnnoidungChanged();
-    partial void OnhinhanhChanging(string value);
-    partial void OnhinhanhChanged();
-    partial void OnvoteChanging(System.Nullable<int> value);
-    partial void OnvoteChanged();
-    partial void OniduserChanging(int value);
-    partial void OniduserChanged();
-    #endregion
-		
-		public PhanHoi()
-		{
-			this._User = default(EntityRef<User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPhanHoi", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idPhanHoi
-		{
-			get
-			{
-				return this._idPhanHoi;
-			}
-			set
-			{
-				if ((this._idPhanHoi != value))
-				{
-					this.OnidPhanHoiChanging(value);
-					this.SendPropertyChanging();
-					this._idPhanHoi = value;
-					this.SendPropertyChanged("idPhanHoi");
-					this.OnidPhanHoiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_noidung", DbType="NVarChar(150)")]
-		public string noidung
-		{
-			get
-			{
-				return this._noidung;
-			}
-			set
-			{
-				if ((this._noidung != value))
-				{
-					this.OnnoidungChanging(value);
-					this.SendPropertyChanging();
-					this._noidung = value;
-					this.SendPropertyChanged("noidung");
-					this.OnnoidungChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hinhanh", DbType="VarChar(30)")]
-		public string hinhanh
-		{
-			get
-			{
-				return this._hinhanh;
-			}
-			set
-			{
-				if ((this._hinhanh != value))
-				{
-					this.OnhinhanhChanging(value);
-					this.SendPropertyChanging();
-					this._hinhanh = value;
-					this.SendPropertyChanged("hinhanh");
-					this.OnhinhanhChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vote", DbType="Int")]
-		public System.Nullable<int> vote
-		{
-			get
-			{
-				return this._vote;
-			}
-			set
-			{
-				if ((this._vote != value))
-				{
-					this.OnvoteChanging(value);
-					this.SendPropertyChanging();
-					this._vote = value;
-					this.SendPropertyChanged("vote");
-					this.OnvoteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_iduser", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int iduser
-		{
-			get
-			{
-				return this._iduser;
-			}
-			set
-			{
-				if ((this._iduser != value))
-				{
-					if (this._User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OniduserChanging(value);
-					this.SendPropertyChanging();
-					this._iduser = value;
-					this.SendPropertyChanged("iduser");
-					this.OniduserChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_PhanHoi", Storage="_User", ThisKey="iduser", OtherKey="iduser", IsForeignKey=true)]
-		public User User
-		{
-			get
-			{
-				return this._User.Entity;
-			}
-			set
-			{
-				User previousValue = this._User.Entity;
-				if (((previousValue != value) 
-							|| (this._User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._User.Entity = null;
-						previousValue.PhanHois.Remove(this);
-					}
-					this._User.Entity = value;
-					if ((value != null))
-					{
-						value.PhanHois.Add(this);
-						this._iduser = value.iduser;
-					}
-					else
-					{
-						this._iduser = default(int);
-					}
-					this.SendPropertyChanged("User");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TruyCap")]
 	public partial class TruyCap : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1721,7 +1511,7 @@ namespace ShopAcc.Models
 		
 		private System.Nullable<bool> _trangthai;
 		
-		private EntitySet<chitietHD> _chitietHDs;
+		private EntitySet<ChiTietHD> _ChiTietHDs;
 		
 		private EntityRef<Account> _Account;
 		
@@ -1741,7 +1531,7 @@ namespace ShopAcc.Models
 		
 		public TruyCap()
 		{
-			this._chitietHDs = new EntitySet<chitietHD>(new Action<chitietHD>(this.attach_chitietHDs), new Action<chitietHD>(this.detach_chitietHDs));
+			this._ChiTietHDs = new EntitySet<ChiTietHD>(new Action<ChiTietHD>(this.attach_ChiTietHDs), new Action<ChiTietHD>(this.detach_ChiTietHDs));
 			this._Account = default(EntityRef<Account>);
 			this._User = default(EntityRef<User>);
 			OnCreated();
@@ -1815,16 +1605,16 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyCap_chitietHD", Storage="_chitietHDs", ThisKey="iduser,id", OtherKey="iduser,id")]
-		public EntitySet<chitietHD> chitietHDs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TruyCap_ChiTietHD", Storage="_ChiTietHDs", ThisKey="iduser,id", OtherKey="iduser,id")]
+		public EntitySet<ChiTietHD> ChiTietHDs
 		{
 			get
 			{
-				return this._chitietHDs;
+				return this._ChiTietHDs;
 			}
 			set
 			{
-				this._chitietHDs.Assign(value);
+				this._ChiTietHDs.Assign(value);
 			}
 		}
 		
@@ -1916,13 +1706,13 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		private void attach_chitietHDs(chitietHD entity)
+		private void attach_ChiTietHDs(ChiTietHD entity)
 		{
 			this.SendPropertyChanging();
 			entity.TruyCap = this;
 		}
 		
-		private void detach_chitietHDs(chitietHD entity)
+		private void detach_ChiTietHDs(ChiTietHD entity)
 		{
 			this.SendPropertyChanging();
 			entity.TruyCap = null;
@@ -1951,8 +1741,6 @@ namespace ShopAcc.Models
 		
 		private System.Nullable<bool> _trangthai;
 		
-		private EntitySet<PhanHoi> _PhanHois;
-		
 		private EntitySet<TruyCap> _TruyCaps;
 		
     #region Extensibility Method Definitions
@@ -1979,7 +1767,6 @@ namespace ShopAcc.Models
 		
 		public User()
 		{
-			this._PhanHois = new EntitySet<PhanHoi>(new Action<PhanHoi>(this.attach_PhanHois), new Action<PhanHoi>(this.detach_PhanHois));
 			this._TruyCaps = new EntitySet<TruyCap>(new Action<TruyCap>(this.attach_TruyCaps), new Action<TruyCap>(this.detach_TruyCaps));
 			OnCreated();
 		}
@@ -2104,7 +1891,7 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anhdaidien", DbType="VarChar(30)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anhdaidien", DbType="VarChar(250)")]
 		public string anhdaidien
 		{
 			get
@@ -2144,19 +1931,6 @@ namespace ShopAcc.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_PhanHoi", Storage="_PhanHois", ThisKey="iduser", OtherKey="iduser")]
-		public EntitySet<PhanHoi> PhanHois
-		{
-			get
-			{
-				return this._PhanHois;
-			}
-			set
-			{
-				this._PhanHois.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_TruyCap", Storage="_TruyCaps", ThisKey="iduser", OtherKey="iduser")]
 		public EntitySet<TruyCap> TruyCaps
 		{
@@ -2188,18 +1962,6 @@ namespace ShopAcc.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PhanHois(PhanHoi entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = this;
-		}
-		
-		private void detach_PhanHois(PhanHoi entity)
-		{
-			this.SendPropertyChanging();
-			entity.User = null;
 		}
 		
 		private void attach_TruyCaps(TruyCap entity)
